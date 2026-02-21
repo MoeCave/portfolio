@@ -23,7 +23,7 @@ export default function ChoosePhase({ S, hovered, setHovered, handleChoose }) {
           style={cardStyle(hovered, "terminal")}
           onMouseEnter={() => setHovered("terminal")}
           onMouseLeave={() => setHovered(null)}
-          onClick={() => handleChoose("Cli")}
+          onClick={() => handleChoose("terminal")}
         >
           <span style={cardIcon(hovered, "terminal")}>⌨</span>
           <span style={cardLabel(hovered, "terminal")}>Terminal</span>
@@ -35,7 +35,7 @@ export default function ChoosePhase({ S, hovered, setHovered, handleChoose }) {
           style={cardStyle(hovered, "gui")}
           onMouseEnter={() => setHovered("gui")}
           onMouseLeave={() => setHovered(null)}
-          onClick={() => handleChoose("Gui")}
+          onClick={() => handleChoose("gui")}
         >
           <span style={cardIcon(hovered, "gui")}>⬡</span>
           <span style={cardLabel(hovered, "gui")}>GUI</span>
