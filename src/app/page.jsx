@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen/index";
-import Cli from "@/components/cli/cli_terminal";
+import CliTerminal from "@/components/cli/Cliterminal";
 import Gui from "@/components/gui/macintosh";
 
 function MainApp({ mode }) {
   return (
     <main style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
-      {mode === "cli" && <Cli />}
+      {mode === "cli" && <CliTerminal />}
       {mode === "gui" && <Gui />}
     </main>
   );
