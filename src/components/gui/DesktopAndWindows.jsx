@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AboutContent, ContactContent, ProjectsContent, SkillsContent, Clock, Notification, Screensaver } from "./UIAndContent.jsx";
+import { AboutContent, ContactContent, ProjectsContent, SkillsContent, Clock, Notification, Screensaver } from "@/components/gui/UIAndContent";
 
 /* ── DRAG HOOK ── */
 function useDrag(ip){
@@ -91,7 +91,7 @@ export function DesktopLayout(){
     <div style={{width:"100%",height:"100%",position:"relative",overflow:"hidden"}}>
       {ss&&<Screensaver onWake={()=>setSs(false)}/>}
       <div style={{height:32,background:"linear-gradient(90deg,#080f08,#0b180b)",borderBottom:"1px solid rgba(57,255,20,.4)",display:"flex",alignItems:"center",padding:"0 12px",gap:20,zIndex:100,position:"relative",flexShrink:0}}>
-        <span style={{fontFamily:"var(--font-vt)",fontSize:"1.1rem",color:"var(--white)",marginRight:12}}>⣿ ALEJANDRO OS</span>
+        <span style={{fontFamily:"var(--font-vt)",fontSize:"1.1rem",color:"var(--white)",marginRight:12}}>⣿ moises OS</span>
         <div className="taskbar-full" style={{display:"flex",gap:16}}>
           {["File","Edit","View","Help"].map(m=><span key={m} style={{color:"var(--white-dim)",fontSize:".8rem"}}>{m}</span>)}
           <span style={{color:"var(--border)"}}>│</span>

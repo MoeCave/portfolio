@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { PromptLabel } from "./UIAndContent.jsx";
+import { PromptLabel } from "@/components/gui/UIAndContent";
 
 /* ── COMMANDS ── */
 export const COMMANDS = {
@@ -13,11 +13,11 @@ export const COMMANDS = {
   whoami     → Identidad del sistema
   date       → Fecha y hora actual
   ls         → Listar directorio`,
-  about: ()=>"Alejandro — Fullstack Developer. Especializado en React, TypeScript, Flask y MongoDB.\nApasionado por el código limpio y las UIs memorables.",
+  about: ()=>"Moisés — Fullstack Developer. Especializado en React, TypeScript, Flask y MongoDB.\nApasionado por el código limpio y las UIs memorables.",
   skills: ()=>"Frontend: React, TypeScript, TailwindCSS, GSAP\nBackend: Flask, Python, REST APIs\nDB: MongoDB, PostgreSQL\nDevOps: Docker, CI/CD, Git",
   projects: ()=>"1. FlaskAPI Pro — REST API escalable con Flask + MongoDB\n2. ReactDashboard — Analytics en tiempo real\n3. DevLink — Red social para developers\n4. CLI Tools Kit — Herramientas de automatización",
-  contact: ()=>"Email: alejandro@dev.io\nGitHub: github.com/alejandro\nLinkedIn: linkedin.com/in/alejandro",
-  whoami: ()=>"alejandro — uid=1000(alejandro) gid=1000(alejandro) groups=1000(alejandro),27(sudo),4(adm)",
+  contact: ()=>"Email: moises@dev.io\nGitHub: github.com/moises\nLinkedIn: linkedin.com/in/moises",
+  whoami: ()=>"moises — uid=1000(moises) gid=1000(moises) groups=1000(moises),27(sudo),4(adm)",
   date: ()=>new Date().toLocaleString("es-ES"),
   ls: ()=>"about.md  skills.json  projects/  contact.html  README.md",
   startx: ()=>"__STARTX__",
@@ -105,16 +105,23 @@ export function TerminalCLI({ onStartX }) {
       onClick={() => inputRef.current?.focus()}
     >
       <pre className="ascii-header" style={{fontSize:"clamp(.4rem,1.2vw,.7rem)",lineHeight:1.15,marginBottom:20,flexShrink:0}}>{`
-  █████╗ ██╗     ███████╗     ██████╗ ███████╗
- ██╔══██╗██║     ██╔════╝    ██╔═══██╗██╔════╝
- ███████║██║     █████╗      ██║   ██║███████╗
- ██╔══██║██║     ██╔══╝      ██║   ██║╚════██║
- ██║  ██║███████╗███████╗    ╚██████╔╝███████║
- ╚═╝  ╚═╝╚══════╝╚══════╝    ╚═════╝ ╚══════╝
+ ██████╗ ██╗      ██████╗ ██╗    ██╗██╗███╗   ██╗ ██████╗
+ ██╔══██╗██║     ██╔═══██╗██║    ██║██║████╗  ██║██╔════╝
+ ██████╔╝██║     ██║   ██║██║ █╗ ██║██║██╔██╗ ██║██║  ███╗
+ ██╔══██╗██║     ██║   ██║██║███╗██║██║██║╚██╗██║██║   ██║
+ ██████╔╝███████╗╚██████╔╝╚███╔███╔╝██║██║ ╚████║╚██████╔╝
+ ╚═════╝ ╚══════╝ ╚═════╝  ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝
+
+ ███████╗███████╗██╗   ██╗███████╗██████╗
+ ██╔════╝██╔════╝██║   ██║██╔════╝██╔══██╗
+ █████╗  █████╗  ██║   ██║█████╗  ██████╔╝
+ ██╔══╝  ██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══██╗
+ ██║     ███████╗ ╚████╔╝ ███████╗██║  ██║
+ ╚═╝     ╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
                                      v1.0.0`}</pre>
 
       <div style={{color:"var(--white-dim)",fontSize:".83rem",marginBottom:18,flexShrink:0,lineHeight:1.6}}>
-        Bienvenido al portfolio de <span style={{color:"var(--green)"}}>Alejandro</span>. Escribe <span style={{color:"var(--amber)"}}>help</span> para ver los comandos disponibles.
+        Bienvenido al portfolio de <span style={{color:"var(--green)"}}>Moisés</span>. Escribe <span style={{color:"var(--amber)"}}>help</span> para ver los comandos disponibles.
       </div>
 
       <div
@@ -164,17 +171,58 @@ export function TerminalCLI({ onStartX }) {
 }
 
 /* ── BOOT SCREEN ── */
-export function BootScreen({onDone}){
-  const [lines,setLines]=useState([]);
-  const bl=["[ OK ] Starting Alejandro OS kernel...","[ OK ] Loading /dev/portfolio...","[ OK ] Mounting filesystem...","[ OK ] Initializing React runtime...","[ OK ] Loading TailwindCSS skin...","[ OK ] Applying phosphor green theme...","[ OK ] Desktop environment ready.","[ BOOT ] Launching GUI..."];
-  useEffect(()=>{
-    let i=0;
-    const iv=setInterval(()=>{if(i<bl.length){setLines(l=>[...l,bl[i]]);i++;}else{clearInterval(iv);setTimeout(onDone,400);}},200);
-    return()=>clearInterval(iv);
-  },[]);
-  return(
-    <div style={{width:"100%",height:"100%",display:"flex",flexDirection:"column",justifyContent:"center",padding:40}}>
-      {lines.map((l,i)=><div key={i} className="boot-line" style={{fontFamily:"var(--font-mono)",fontSize:".9rem",color:l.includes("OK")?"var(--white)":"var(--amber)",marginBottom:8,lineHeight:1.7}}>{l}</div>)}
+export function BootScreen({ onDone }) {
+  const [lines, setLines] = useState([]);
+  const bl = [
+    "[ OK ] Starting Moisés OS kernel...",
+    "[ OK ] Loading /dev/portfolio...",
+    "[ OK ] Mounting filesystem...",
+    "[ OK ] Initializing React runtime...",
+    "[ OK ] Loading TailwindCSS skin...",
+    "[ OK ] Applying phosphor green theme...",
+    "[ OK ] Desktop environment ready.",
+    "[ BOOT ] Launching GUI..."
+  ];
+  
+  useEffect(() => {
+    let i = 0;
+    const iv = setInterval(() => {
+      if (i < bl.length) {
+        setLines(l => [...l, bl[i]]);
+        i++;
+      } else {
+        clearInterval(iv);
+        setTimeout(() => onDone?.(), 400);
+      }
+    }, 200);
+    
+    return () => clearInterval(iv);
+  }, []);
+  
+  return (
+    <div style={{
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      padding: 40
+    }}>
+      {lines.map((l, i) => (
+        <div 
+          key={i}
+          className="boot-line"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: ".9rem",
+            color: (typeof l === 'string' && l.includes("OK")) ? "var(--white)" : "var(--amber)",
+            marginBottom: 8,
+            lineHeight: 1.7
+          }}
+        >
+          {l}
+        </div>
+      ))}
     </div>
   );
 }

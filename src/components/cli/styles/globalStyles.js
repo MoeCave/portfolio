@@ -10,7 +10,7 @@ export const globalStyles = `
     --amber: #ffb000;
     --white: #e8f0e8;
     --white-dim: #99aa99;
-    --bg: #060c06;
+    --bg: #000000;
     --bg2: #0a100a;
     --border: #1a341a;
     --scanline: rgba(0,0,0,0.12);

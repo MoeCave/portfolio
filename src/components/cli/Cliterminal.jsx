@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { globalStyles } from "./styles/globalStyles.js";
 import { TerminalCursor, ParticleCanvas } from "./components/Effects.jsx";
-import { TerminalCLI, BootScreen } from "./components/TerminalAndBoot.jsx";
-import { DesktopLayout } from "./components/DesktopAndWindows.jsx";
+import { TerminalCLI, BootScreen } from "@/components/cli/components/TerminalAndBoot.jsx";
+import { DesktopLayout } from "@/components/gui/DesktopAndWindows.jsx";
 
 export default function App(){
   const [view,setView]=useState("cli");
