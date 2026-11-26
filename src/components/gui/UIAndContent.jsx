@@ -162,9 +162,15 @@ export function ContactContent(){
         body:    JSON.stringify({ name: form.name, email: form.email, msg: form.msg }),
       });
 
-      const data = await res.json();
-
-      if (!res.ok) throw new Error(data.error || "Error del servidor");
+      if (!res.ok) {
+        const text = await res.text();
+        let errorMsg = "El formulario de contacto está desactivado temporalmente.";
+        try {
+          const data = JSON.parse(text);
+          if (data.error) errorMsg = data.error;
+        } catch {}
+        throw new Error(errorMsg);
+      }
 
       setStatus("sent");
     } catch (err) {
